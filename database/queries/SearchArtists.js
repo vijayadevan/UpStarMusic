@@ -40,11 +40,11 @@ module.exports = (criteria, sortProperty, offset = 0, limit = 20) => {
         .skip(offset)
         .limit(limit);
 
-    return allDetails
-        .then(artists => {
+    return Promise.all([allDetails, Artist.count(buildQuery(criteria))])
+        .then(res => {
             return {
-                all: artists,
-                count: artists.length,
+                all: res[0],
+                count: res[1],
                 offset,
                 limit
             };

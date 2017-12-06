@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose');
 
-const AlbumSchema = new Schema ({
+const AlbumSchema = new Schema({
     title: String,
     date: Date,
     copiesSold: Number,
